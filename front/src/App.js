@@ -18,7 +18,7 @@ const App = () => {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/produtos`
+        `http://localhost:3000/productos`
       );
       setProducts(res.data);
     } catch (err) {
@@ -90,7 +90,7 @@ const App = () => {
     } else {
       try {
         const res = await axios.put(
-          `http://localhost:3001/cart/updatequantidade`,
+          `http://localhost:3000/cart/updatequantidade`,
           {
             "id": id,
             "nova_quantidade": nova_quantidade,
@@ -110,7 +110,7 @@ const App = () => {
   const handleRemoveFromCart = async (id_produto, id_cliente) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3001/cart/`+id_produto+'/'+id_cliente
+        `http://localhost:3000/cart/`+id_produto+'/'+id_cliente
       );
       if(res.status !== 200) {
         console.log(res)
@@ -124,7 +124,7 @@ const App = () => {
   const handleEmptyCart = async (id_cliente) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3001/cart/`+id_cliente
+        `http://localhost:3000/cart/`+id_cliente
       );
       if(res.status !== 200) {
         console.log(res)
