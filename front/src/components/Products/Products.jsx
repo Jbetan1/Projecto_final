@@ -8,7 +8,7 @@ import redsocial from "../../assets/face.png"
 import redsocial1 from "../../assets/IG.webp"
 import redsocial2 from "../../assets/twiter.png"
 import Grid from '@material-ui/core/Grid';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Product from './Product/Product';
 import useStyles from './styles';
 
@@ -59,15 +59,15 @@ const Products = ({ products, onAddToCart }) => {
                     
                     <section className="social-media-content-1">
                         <section className="center-1">
-                            <a href="https://www.facebook.com/smockjose" target="_blank" className="text-media">
+                            <a href="https://www.facebook.com/smockjose" target="_blank" rel="noopener noreferrer" className="text-media">
                                 <img className="social-media-4" src={redsocial} alt="logotipo de facebook"></img>
                                 Facebook
                             </a>
-                            <a href="https://www.instagram.com/jos3betancourt/" target="_blank" className="text-media">
+                            <a href="https://www.instagram.com/jos3betancourt/" target="_blank" rel="noopener noreferrer" className="text-media">
                                 <img className="social-media-4"  src={redsocial1} alt="logotipo de instagram"></img>
                                 Instagram
                             </a>
-                            <a href="https://twitter.com/Jose27273015" target="_blank" className="text-media">
+                            <a href="https://twitter.com/Jose27273015" target="_blank" rel="noopener noreferrer" className="text-media">
                                 <img className="social-media-4"  src={redsocial2} alt="logotipo de twitter"></img>
                                 Twitter
                             </a>

@@ -10,7 +10,7 @@ const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
   const { cliente } = useContext(StoreContext);
 
-  const handleAddToCart = () => onAddToCart(product.id_produto, 1, cliente);
+  const handleAddToCart = () => onAddToCart(product.id_produto, 1, cliente, product.nome_produto, product.valor_produto, product.foto_produto, product.tamanho_produto, product.tipo_produto);
 
   return (
     <Card className={classes.root}>

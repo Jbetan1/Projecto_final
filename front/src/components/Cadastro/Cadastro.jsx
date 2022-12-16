@@ -22,7 +22,7 @@ export default function Cadastro() {
     })
   }
 
-  const URL = "http://localhost:3001/cliente"
+  const URL = "http://localhost:3000/cliente"
 
   const handleSubmit = async (event) => {
     event.preventDefault();

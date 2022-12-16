@@ -12,8 +12,6 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [totalItems, setTotalItems] = useState(Number);
-  const [errorMessage, setErrorMessage] = useState('');
- 
  
   const fetchProducts = async () => {
     try {
@@ -29,35 +27,40 @@ const App = () => {
   const fetchCart = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/cart`, { params: { id_cliente: cliente} }
+        `http://localhost:3000/cart?id_cliente=${cliente}`
       );
+
       setCart(res.data);
       setTotalItems(res.data.length)
     } catch (err) {
       console.log(err);
     }
+    //console.log('2',listItem.data)
+
   };
 
-  const handleAddToCart = async (productId, quantidade, id_cliente) => {
+  const handleAddToCart = async (productId, quantidade, id_cliente, nome_produto, valor_produto, foto_produto, tamanho_produto, tipo_produto) => {
     if (cart.length > 0) {
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].id_produto === productId) {
-          handleUpdateCartQty(cart[i].id, cart[i].quantidade + 1 , cart[i].id_cliente, cart[i].id_produto);
+          handleUpdateCartQty(cart[i].id, cart[i].quantidade + 1 , cart[i].id_cliente, cart[i].id_produto, cart[i].nome_produto, cart[i].valor_produto, cart[i].foto_produto, cart[i].tamanho_produto, cart[i].tipo_produto);
           break;
         } 
         if (cart.length - 1 === i && cart[i].id_produto !== productId){
           try {
-            const res = await axios.post(
+            await axios.post(
               `http://localhost:3000/cart`,
               {
                 "id_produto": productId,
                 "id_cliente": id_cliente,
-                "quantidade": quantidade
+                "quantidade": quantidade,
+                "nome_produto": nome_produto,
+                "valor_produto": valor_produto,
+                "foto_produto": foto_produto,
+                "tamanho_produto": tamanho_produto,
+                "tipo_produto": tipo_produto,
               }
             );
-            if(res.status !== 200) {
-              console.log(res)
-            }
             fetchCart()
           } catch (err) {
             console.log(err);
@@ -66,17 +69,19 @@ const App = () => {
       }
     } else {
       try {
-        const res = await axios.post(
+        await axios.post(
           `http://localhost:3000/cart`,
           {
             "id_produto": productId,
             "id_cliente": id_cliente,
-            "quantidade": quantidade
+            "quantidade": quantidade,
+            "nome_produto": nome_produto,
+            "valor_produto": valor_produto,
+            "foto_produto": foto_produto,
+            "tamanho_produto": tamanho_produto,
+            "tipo_produto": tipo_produto,
           }
         );
-        if(res.status !== 200) {
-          console.log(res)
-        }
         fetchCart()
       } catch (err) {
         console.log(err);
@@ -84,17 +89,22 @@ const App = () => {
     }
   };
 
-  const handleUpdateCartQty = async (id, nova_quantidade, id_cliente, id_produto) => {
+  const handleUpdateCartQty = async (id, nova_quantidade, id_cliente, id_produto, nome_produto, valor_produto, foto_produto, tamanho_produto, tipo_produto) => {
     if (nova_quantidade <= 0) {
-      handleRemoveFromCart(id_produto, id_cliente)
+      handleRemoveFromCart(id)
     } else {
       try {
         const res = await axios.put(
-          `http://localhost:3000/cart/updatequantidade`,
+          `http://localhost:3000/cart/${id}`,
           {
-            "id": id,
-            "nova_quantidade": nova_quantidade,
-            "id_cliente": id_cliente
+            "quantidade": nova_quantidade,
+            "id_cliente": id_cliente,
+            "id_produto": id_produto,
+            "nome_produto": nome_produto,
+            "valor_produto": valor_produto,
+            "foto_produto": foto_produto,
+            "tamanho_produto": tamanho_produto,
+            "tipo_produto": tipo_produto
           }
         );
         if(res.status !== 200) {
@@ -107,14 +117,11 @@ const App = () => {
     }
   };
 
-  const handleRemoveFromCart = async (id_produto, id_cliente) => {
+  const handleRemoveFromCart = async (id) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:3000/cart/`+id_produto+'/'+id_cliente
+      await axios.delete(
+        `http://localhost:3000/cart/${id}`
       );
-      if(res.status !== 200) {
-        console.log(res)
-      }
       fetchCart()
     } catch (err) {
       console.log(err);
@@ -156,10 +163,10 @@ const App = () => {
                 <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
               </Route>
               <Route path="/login" exact>
-                <Login error={errorMessage} />
+                <Login />
               </Route>
               <Route path="/cadastro" exact>
-                <Cadastro error={errorMessage} />
+                <Cadastro />
               </Route>
             </Switch>
         </div>

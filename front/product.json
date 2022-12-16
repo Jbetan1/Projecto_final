@@ -1,22 +1,60 @@
 {
+  "cliente": [
+    {
+      "cpf": "22256556556",
+      "nome": "Jose",
+      "endereco": "ruajja lakala",
+      "cep": "002235",
+      "telefone": "011111",
+      "email": "jos3@gmail.com",
+      "senha": "12345",
+      "id": 1
+    }
+  ],
   "cart": [
     {
-      "id_produto": 3,
+      "id_produto": 9,
       "id_cliente": 12,
       "quantidade": 1,
-      "id": 1
-    },
-    {
-      "id_produto": 4,
-      "id_cliente": 12,
-      "quantidade": 1,
+      "nome_produto": "Converse Run star",
+      "valor_produto": "720,00",
+      "foto_produto": "https://i.imgur.com/3d55YZR.jpg",
+      "tamanho_produto": "38",
+      "tipo_produto": "Coleção Verão 2022-2023",
       "id": 2
     },
     {
-      "id_produto": 2,
-      "id_cliente": 12,
-      "quantidade": 1,
+      "quantidade": 2,
+      "id_cliente": 1,
+      "id_produto": 3,
+      "nome_produto": "Puma Rs-x",
+      "valor_produto": "450,00",
+      "foto_produto": "https://i.imgur.com/admI3cO.png",
+      "tamanho_produto": "40",
+      "tipo_produto": "Coleção Verão 2022-2023",
       "id": 3
+    },
+    {
+      "quantidade": 2,
+      "id_cliente": 1,
+      "id_produto": 3,
+      "nome_produto": "Puma Rs-x",
+      "valor_produto": "450,00",
+      "foto_produto": "https://i.imgur.com/admI3cO.png",
+      "tamanho_produto": "40",
+      "tipo_produto": "Coleção Verão 2022-2023",
+      "id": 4
+    },
+    {
+      "quantidade": 3,
+      "id_cliente": 1,
+      "id_produto": 2,
+      "nome_produto": "Nike air max",
+      "valor_produto": "600,00",
+      "foto_produto": "https://i.imgur.com/hpGNz5M.png",
+      "tamanho_produto": "40",
+      "tipo_produto": "Coleção Verão 2022-2023",
+      "id": 5
     }
   ],
   "productos": [
@@ -96,7 +134,9 @@
       "id_produto": 10,
       "nome_produto": "Adidas Ozweego",
       "foto_produto": "https://i.imgur.com/r3xm2bp.jpg",
-      "tamanho_produto": "38"
+      "tamanho_produto": "38",
+      "tipo_produto": "Coleção Verão 2022-2023",
+      "valor_produto": "720,00"
     }
   ]
 }

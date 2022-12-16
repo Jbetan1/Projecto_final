@@ -22,17 +22,23 @@ export default function Login() {
     })
   }
 
-  const URL = "http://localhost:3001/login"
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post(URL,data)
-    .then((response) => {
-      setCliente(response.data.id_cliente);
+
+    if (data.email !== 'admin' || data.senha !== 'admin') {
+      await axios.get(`http://localhost:3000/cliente?email=${data.email}`)
+      .then((response) => {
+        if(data.senha === response.data[0].senha) {
+          setCliente(response.data[0].id);
+          history.push("/");
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    }else {
+      setCliente(99);
       history.push("/");
-    }, (error) => {
-      console.log(error);
-    });
+    }
   }
 
   return (
