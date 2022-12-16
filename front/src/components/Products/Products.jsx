@@ -55,7 +55,7 @@ const Products = ({ products, onAddToCart }) => {
                 <section className="texto-contato">
                     <h2 className="titulo-contato">Contato</h2>
                     <p>Quer entrar em contato con a loja ?</p>
-                    <p>Você também pode me encontrar nas seguintes redes sociais:</p>
+                    <p>Você pode nos encontrar nas seguintes redes sociais:</p>
                     
                     <section className="social-media-content-1">
                         <section className="center-1">

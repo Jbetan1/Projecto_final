@@ -7,4 +7,5 @@ export default makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
   }
+  
 }));

@@ -29,7 +29,7 @@ const App = () => {
   const fetchCart = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/cart`, { params: { id_cliente: cliente} }
+        `http://localhost:3000/cart`, { params: { id_cliente: cliente} }
       );
       setCart(res.data);
       setTotalItems(res.data.length)
@@ -48,7 +48,7 @@ const App = () => {
         if (cart.length - 1 === i && cart[i].id_produto !== productId){
           try {
             const res = await axios.post(
-              `http://localhost:3001/cart`,
+              `http://localhost:3000/cart`,
               {
                 "id_produto": productId,
                 "id_cliente": id_cliente,
@@ -67,7 +67,7 @@ const App = () => {
     } else {
       try {
         const res = await axios.post(
-          `http://localhost:3001/cart`,
+          `http://localhost:3000/cart`,
           {
             "id_produto": productId,
             "id_cliente": id_cliente,
